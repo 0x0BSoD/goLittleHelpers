@@ -1,6 +1,8 @@
 package goLittleHelpers
 
 import (
+	"crypto/md5"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"math"
@@ -135,4 +137,10 @@ func Normalize(s string) string {
 		}
 	}
 	return res
+}
+
+// GetMD5Hash return MD5 hash as a string
+func GetMD5Hash(text string) string {
+	hash := md5.Sum([]byte(text))
+	return hex.EncodeToString(hash[:])
 }
